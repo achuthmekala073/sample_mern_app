@@ -1,17 +1,17 @@
 let express=require('express');
 let app=express();
-// localhost:3000/addStudent
-app.post("/addStudent",(req,res)=>{
-    res.send("add students called");
-})
-// localhost:3000/getStudent
-app.get("/getStudents",(req,res)=>{
-    res.send("get students called");
-})
-// localhost:3000/updateStudent
-app.put("/updateStudents",(req,res)=>{
-    res.send("update student called");
-})
+let emproutes=require('./routes/emp_route');
+app.use("/api/emp",emproutes);
+//localhost:3000/api/emp/register =>post
+//localhost:3000/api/emp/login =>post
+//localhost:3000/api/emp/viewtask =>post
+//localhost:3000/api/emp/updateprofile=>patch
+let hrroutes=require('./routes/hr_route');
+app.use("/api/hr",hrroutes);
+//localhost:3000/api/hr/viewemp =>get
+//localhost:3000/api/hr/assign-task =>post
+//localhost:3000/api/hr/deleteemp =>delete
+//localhost:3000/api/hr/viewtask=>get
 // run the server
 app.listen(3000,()=>{
     console.log("server lisening on port 3000");
