@@ -6,16 +6,33 @@ let taskSchema=mongoose.Schema({
     },
     task_desc:{
         type:String,
-
+        required:true
     },
     task_duedate:{
         type:Date,
-        
+        required:true
     },
     task_assignedBy:{
-        type:
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'users'
     },
     task_assignedTo:{
-        type:
+        type:mongoose.Schema.Types.ObjectId,
+        required:true,
+        ref:'users'
     },
-})
+    task_status:{
+        type:String,
+        enum:["pending","inprogress","completed"],
+        default:"pending"
+        
+    },
+       
+},
+{
+    time_stamps:true
+}
+)
+const task=mongoose.model('tasks',taskSchema);
+module.exports={task}
