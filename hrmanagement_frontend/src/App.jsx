@@ -6,6 +6,10 @@ import Contact from "./pages/Contact"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 
+import HrHome from "./pages/HrHome"
+import EmpHome from "./pages/EmpHome"
+import AdminHome from "./pages/AdminHome"
+
 import {Routes,Route} from 'react-router-dom'
 function App() {
   
@@ -15,6 +19,10 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/hrhome" element={<HrHome></HrHome>}></Route>
+        <Route path="/emphome" element={<EmpHome></EmpHome>}></Route>
+        <Route path="/adminhome" element={<AdminHome></AdminHome>}></Route>
+        
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/about" element={<About></About>}></Route>

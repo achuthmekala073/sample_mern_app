@@ -1,12 +1,30 @@
 import {useState} from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 function Login()
 {
     let [email,setEmail]=useState("");
     let [password,setPassword]=useState("");
-    let handleLogin=(event)=>{
+    let navigate=useNavigate();
+    let handleLogin=async(event)=>{
       event.preventDefault();
       console.log(email);
-      console.log(password)
+      console.log(password);
+      if(email=="admin@gmail.com" && password=="admin"){
+        navigate("/adminhome");
+      }else{
+        let req=await fetch("http://localhost:3000/api/emp/login",
+          {
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({email,password})
+          }
+        );
+        let res=await req.json()
+        console.log(res);
+        
+      }
     }
     return(
         <div>
